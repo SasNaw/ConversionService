@@ -23,7 +23,7 @@ For help:
 
 To run:
 
-    python ConversionService -i &lsaquo;input folder&rsaquo;
+    python ConversionService -i <input folder>
 
 ## Dependencies
 - [deepzoom.py](https://github.com/openzoom/deepzoom.py)
