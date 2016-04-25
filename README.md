@@ -17,10 +17,12 @@ The purpose of this service is to convert images into [deep zoom images](https:/
     git clone https://github.com/SasNaw/ConversionService.git
 
 ## Example
-For help:<br>
+For help:
+
     python ConversionService -h
 
-To run:<br>
+To run:
+
     python ConversionService -i &lsaquo;input folder&rsaquo;
 
 ## Dependencies
