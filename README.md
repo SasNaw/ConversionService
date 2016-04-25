@@ -1,5 +1,5 @@
 # ConversionService
-The purpose of this service is to convert images into deep zoom images (dzi, see https://msdn.microsoft.com/en-us/library/cc645077(v=vs.95).aspx for further information). Valid input formats for this service are:
+The purpose of this service is to convert images into [deep zoom images](https://msdn.microsoft.com/en-us/library/cc645077(v=vs.95).aspx) (dzi). Valid input formats for this service are:
 * .bif
 * .mrxs
 * .npdi
@@ -9,30 +9,24 @@ The purpose of this service is to convert images into deep zoom images (dzi, see
 * .tif
 * .tiff
 * .vms
-* .vmu<br>
-Deepzoom.py is used for the actual conversion (see https://github.com/openzoom/deepzoom.py) into dzi.
+* .vmu
+
+[Deepzoom.py](https://github.com/openzoom/deepzoom.py) is used for the actual conversion into dzi.
 
 ## Installation
-<code>
-git clone https://github.com/SasNaw/ConversionService.git
-</code>
+    git clone https://github.com/SasNaw/ConversionService.git
 
 ## Example
 For help:<br>
-<code>
-python ConversionService -h
-</code>
+    python ConversionService -h
 
 To run:<br>
-<code>
-python ConversionService -i &lsaquo;input folder&rsaquo;
-</code>
+    python ConversionService -i &lsaquo;input folder&rsaquo;
 
 ## Dependencies
-* deepzoom
+- [deepzoom.py](https://github.com/openzoom/deepzoom.py)
 
-<code>
-git clone https://github.com/openzoom/deepzoom.py.git<br>
-cd deepzoom.py<br>
-python setup.py install
-</code>
+    git clone https://github.com/openzoom/deepzoom.py.git<br>
+    cd deepzoom.py<br>
+    python setup.py install
+
