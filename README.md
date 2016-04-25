@@ -24,6 +24,8 @@ For help:
 To run:
 
     python ConversionService -i <input folder>
+    
+The newly converted dzi will be saved in the same folder as the ConversionService is in, plus "/dzi/".
 
 ## Dependencies
 - [deepzoom.py](https://github.com/openzoom/deepzoom.py)
