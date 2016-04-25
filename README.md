@@ -20,25 +20,21 @@ git clone https://github.com/SasNaw/ConversionService.git
 </code>
 
 ## Example
-For help:
-
+For help:<br>
 <code>
 python ConversionService -h
 </code>
 
-To run:
-
+To run:<br>
 <code>
-python ConversionService -i <input folder>
+python ConversionService -i \l input folder \g
 </code>
 
 ## Dependencies
 * deepzoom
 
 <code>
-git clone https://github.com/openzoom/deepzoom.py.git
-
-cd deepzoom.py
-
-python setup.py install
+git clone https://github.com/openzoom/deepzoom.py.git <br>
+cd deepzoom.py <br>
+python setup.py install <br>
 </code>
