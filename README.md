@@ -30,6 +30,8 @@ The newly converted dzi will be saved in the same folder as the ConversionServic
 ## Dependencies
 - [deepzoom.py](https://github.com/openzoom/deepzoom.py)
 
+### Installation
+
     git clone https://github.com/openzoom/deepzoom.py.git
     cd deepzoom.py
     python setup.py install
