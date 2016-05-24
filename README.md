@@ -11,28 +11,17 @@ The purpose of this service is to convert images into [deep zoom images](https:/
 * .vms
 * .vmu
 
-[Deepzoom.py](https://github.com/openzoom/deepzoom.py) is used for the actual conversion into dzi.
+[VIPS](http://www.vips.ecs.soton.ac.uk/index.php?title=VIPS) is used for the conversion into dzi.
 
 ## Installation
     git clone https://github.com/SasNaw/ConversionService.git
 
 ## Example
-For help:
-
-    python ConversionService -h
-
 To run:
 
-    python ConversionService -i <input folder>
+    python ConversionService <input dir> <output dir>
     
-The newly converted dzi will be saved in the same folder as the ConversionService is in, plus "/dzi/".
+The newly converted dzi will be saved in the same folder as the ConversionService operates from, plus "/dzi/<output dir>/".
 
 ## Dependencies
-- [deepzoom.py](https://github.com/openzoom/deepzoom.py)
-
-### Installation
-
-    git clone https://github.com/openzoom/deepzoom.py.git
-    cd deepzoom.py
-    python setup.py install
-
+- [libvips](https://github.com/jcupitt/libvips)
