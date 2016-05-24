@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 #
 #  Deep Zoom Tools
@@ -37,40 +36,40 @@
 #
 
 import sys, getopt
-import deepzoom
 import os
+from gi.repository import Vips
 
 
 global OUTPUT
 OUTPUT = "dzi/"
+global TILESIZE
+TILESIZE = 256
+global OVERLAP
+OVERLAP = 0
 
 
 # check if input parameters are valid
 # return input folder if valid, exit otherwise
 def checkParams():
-	try:
-		opts, argv = getopt.getopt(sys.argv[1:],"hi:",["ifile="])
-	except getopt.GetoptError:
-		print("Error: parameter not found!")
-		print("Try ConversionService.py -i <input folder>")
+	global OUTPUT
+	if(len(sys.argv) != 3):
+		print("Error: wrong number of parameters!")
+		print("Try: python ConversionService.py -i <input dir> <output dir>")
 		sys.exit(2)
-
-	if(len(opts) == 0):
-		print("Error: no input folder specified!")
-		print("Try ConversionService.py -i <input folder>")
-		sys.exit(2)
-	for opt, arg in opts:
-		if opt == "-h":
-			print("ConversionService.py -i <input folder>")
-			sys.exit()
-		elif opt in ("-i", "--ifile"):
-			path = arg
-	if(os.path.exists(path)):
-		print("Input folder is " + path)
-		return path
 	else:
-		print("Input folder " + path + " doesn't exist")
-		sys.exit(2)
+		path = str(sys.argv[1])
+		if not(path.endswith("/")):
+			path += "/"
+		OUTPUT = OUTPUT + str(sys.argv[2])
+		if not(OUTPUT.endswith("/")):
+			OUTPUT += "/"
+		if(os.path.exists(path)):
+			print("Input folder is " + path)
+			createOutputDir();
+			return path
+		else:
+			print("Input folder " + path + " doesn't exist")
+			sys.exit(2)
 
 
 # get length of file extension for later replacement with .dzi
@@ -123,14 +122,9 @@ def createOutputDir():
 # param file: file to be converted
 # param extLen: length of file extension
 def convert(path, file, extLen):
-	if not(path.endswith("/")):
-		path += "/"
-	dzi = file[:extLen] + "dzi"
-	# Create Deep Zoom Image creator with weird parameters
-	creator = deepzoom.ImageCreator(tile_size=256, tile_overlap=0, tile_format="png",
-			                        image_quality=1.0, resize_filter="bicubic")
-	# Create Deep Zoom image pyramid from source
-	creator.create(path + file, OUTPUT + dzi)
+	dzi = OUTPUT + file[:extLen] + "dzi"
+	im = Vips.Image.new_from_file(path + file)
+	im.dzsave(dzi, overlap=OVERLAP, tile_size=TILESIZE)
 
 
 # main function
