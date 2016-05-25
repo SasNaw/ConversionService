@@ -78,10 +78,7 @@ def checkParams():
 def getFileExt(file):
 	extLen = 0
 	print("checking file extension for " + file + "...")
-	#todo: delete, just for testing purposes
-	if file.lower().endswith(".jpg"):
-		extLen = -3
-	elif file.lower().endswith(".bif"):
+	if file.lower().endswith(".bif"):
 		extLen = -3
 	elif file.lower().endswith(".mrxs"):
 		extLen = -4
