@@ -50,7 +50,7 @@ def getFileExt(file):
 		extLen = -3
 	elif file.lower().endswith(".mrxs"):
 		extLen = -4
-	elif file.lower().endswith(".npdi"):
+	elif file.lower().endswith(".ndpi"):
 		extLen = -4
 	elif file.lower().endswith(".scn"):
 		extLen = -3
