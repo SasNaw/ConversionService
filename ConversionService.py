@@ -19,7 +19,7 @@ def checkParams():
 	global OUTPUT
 	if(len(sys.argv) != 3):
 		print("Error: wrong number of parameters!")
-		print("Try: python ConversionService.py -i <input dir> <output dir>")
+		print("Try: python ConversionService.py <input dir> <output dir>")
 		sys.exit(2)
 	else:
 		path = str(sys.argv[1])
