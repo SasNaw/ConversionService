@@ -38,7 +38,8 @@
 import sys, getopt
 import os
 from gi.repository import Vips
-
+import subprocess
+from subprocess import call
 
 global OUTPUT
 OUTPUT = "dzi/"
@@ -114,15 +115,29 @@ def createOutputDir():
 	    os.makedirs(OUTPUT)
 
 
-# convert image source into .dzi format
+# convert image source into .dzi format and copies all header information
+# into [img]_files dir as metadata.txt
 # param path: directory of param file
 # param file: file to be converted
 # param extLen: length of file extension
 def convert(path, file, extLen):
 	dzi = OUTPUT + file[:extLen] + "dzi"
 	im = Vips.Image.new_from_file(path + file)
-	im.dzsave(dzi, overlap=OVERLAP, tile_size=TILESIZE)
-
+	# get image header and save to metadata file
+	#im.dzsave(dzi, overlap=OVERLAP, tile_size=TILESIZE)
+	# create file for header
+	headerOutput = OUTPUT + file[:extLen-1] + "_files/metadata.txt"
+	bashCommand = "touch " + headerOutput
+	call(bashCommand.split())
+	# get header information
+	bashCommand = "vipsheader -a " + path + file
+	p = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	out, err = p.communicate()
+	# write header information to file
+	text_file = open(headerOutput, "w")
+	text_file.write(out)
+	text_file.close()
+	
 
 # main function
 def main():
