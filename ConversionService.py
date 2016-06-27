@@ -124,7 +124,7 @@ def convert(path, file, extLen):
 	dzi = OUTPUT + file[:extLen] + "dzi"
 	im = Vips.Image.new_from_file(path + file)
 	# get image header and save to metadata file
-	#im.dzsave(dzi, overlap=OVERLAP, tile_size=TILESIZE)
+	im.dzsave(dzi, overlap=OVERLAP, tile_size=TILESIZE)
 	# create file for header
 	headerOutput = OUTPUT + file[:extLen-1] + "_files/metadata.txt"
 	bashCommand = "touch " + headerOutput
